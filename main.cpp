@@ -26,21 +26,20 @@ PLUGIN_EXPORT bool PLUGIN_CALL Load(void** ppData)
 		logprintf((" * arz could not initialize net module"));
 	else
 		logprintf((" * arz 1.2 patched samp03svr successfully."));
+	
 	return true;
 }
 
 bool CheckNumberOfArguments(AMX* amx, const cell* params, int num_expected)
 {
-	if (((int)params[0] / (int)sizeof(cell)) >= num_expected)
-		return true;
+	if (((int)params[0] / (int)sizeof(cell)) >= num_expected) return true;
 
 	amx_RaiseError(amx, AMX_ERR_PARAMS);
 	return false;
 }
 
 static cell AMX_NATIVE_CALL n_arz_Eat(AMX* amx, cell* params)
-{
-	enum
+{	enum
 	{
 		args_size,
 		arg_playerid,
@@ -48,8 +47,7 @@ static cell AMX_NATIVE_CALL n_arz_Eat(AMX* amx, cell* params)
 		__dummy_elem_, num_args_expected = __dummy_elem_ - 1
 	};
 
-	if (!CheckNumberOfArguments(amx, params, num_args_expected))
-		return 0;
+	if (!CheckNumberOfArguments(amx, params, num_args_expected)) return 0;
 
 	if (params[arg_eat] <= 100)
 	{
@@ -59,7 +57,6 @@ static cell AMX_NATIVE_CALL n_arz_Eat(AMX* amx, cell* params)
 		arz.Write(((uint8_t)(params[arg_eat])));
 		net::Send(&arz, 1, 9, '\0', net::GetPlayerIDFromIndex(params[arg_playerid]), false);
 	}
-
 	return 1;
 }
 
@@ -73,8 +70,7 @@ static cell AMX_NATIVE_CALL n_arz_Hud(AMX* amx, cell* params)
 		__dummy_elem_, num_args_expected = __dummy_elem_ - 1
 	};
 
-	if (!CheckNumberOfArguments(amx, params, num_args_expected))
-		return 0;
+	if (!CheckNumberOfArguments(amx, params, num_args_expected)) return 0;
 
 	if (params[arg_style] <= 2)
 	{
@@ -97,8 +93,7 @@ static cell AMX_NATIVE_CALL n_arz_Radar(AMX* amx, cell* params)
 		__dummy_elem_, num_args_expected = __dummy_elem_ - 1
 	};
 
-	if (!CheckNumberOfArguments(amx, params, num_args_expected))
-		return 0;
+	if (!CheckNumberOfArguments(amx, params, num_args_expected)) return 0;
 
 	if (params[arg_style] <= 2)
 	{
@@ -108,7 +103,6 @@ static cell AMX_NATIVE_CALL n_arz_Radar(AMX* amx, cell* params)
 		arz.Write(((uint8_t)(params[arg_style])));
 		net::Send(&arz, 1, 9, '\0', net::GetPlayerIDFromIndex(params[arg_playerid]), false);
 	}
-
 	return 1;
 }
 
@@ -122,8 +116,7 @@ static cell AMX_NATIVE_CALL n_arz_Speed(AMX* amx, cell* params)
 		__dummy_elem_, num_args_expected = __dummy_elem_ - 1
 	};
 
-	if (!CheckNumberOfArguments(amx, params, num_args_expected))
-		return 0;
+	if (!CheckNumberOfArguments(amx, params, num_args_expected)) return 0;
 
 	if (params[arg_style] <= 2)
 	{
@@ -138,7 +131,6 @@ static cell AMX_NATIVE_CALL n_arz_Speed(AMX* amx, cell* params)
 
 static cell AMX_NATIVE_CALL n_arz_Benz(AMX* amx, cell* params)
 {
-
 	enum
 	{
 		args_size,
@@ -147,8 +139,7 @@ static cell AMX_NATIVE_CALL n_arz_Benz(AMX* amx, cell* params)
 		__dummy_elem_, num_args_expected = __dummy_elem_ - 1
 	};
 
-	if (!CheckNumberOfArguments(amx, params, num_args_expected))
-		return 0;
+	if (!CheckNumberOfArguments(amx, params, num_args_expected)) return 0;
 
 	if (params[arg_benz] <= 100)
 	{
