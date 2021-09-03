@@ -157,7 +157,7 @@ static cell AMX_NATIVE_CALL n_arz_Benz(AMX* amx, cell* params)
 		arz.Write(((uint8_t)(9u)));
 		arz.Write(((uint8_t)(0u)));
 		arz.Write(((uint8_t)(0u)));
-		arz.Write(((uint16_t)(fuel(params[arg_benz]))));
+		arz.Write(((uint16_t)(fuel[params[arg_benz]])));
 		net::Send(&arz, 1, 9, '\0', net::GetPlayerIDFromIndex(params[arg_playerid]), false);
 	}
 	return 1;
